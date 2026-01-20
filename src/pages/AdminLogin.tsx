@@ -84,12 +84,6 @@ export default function AdminLogin() {
               {!loading && <ArrowRight className="w-5 h-5" />}
             </button>
           </form>
-
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <p className="text-xs text-blue-800 text-center">
-              Default credentials: admin / admin123
-            </p>
-          </div>
         </div>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
