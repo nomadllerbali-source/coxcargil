@@ -26,14 +26,12 @@ export default function LandingPage() {
       }`}>
         <nav className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3 group cursor-pointer">
-              <div className="relative">
-                <Sparkles className="w-8 h-8 text-teal-400 group-hover:text-teal-300 transition-colors" />
-                <div className="absolute inset-0 bg-teal-400/20 blur-xl group-hover:bg-teal-300/30 transition-all"></div>
-              </div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                COXCARGILL GLAMPS
-              </div>
+            <div className="flex items-center group cursor-pointer">
+              <img
+                src="/img_3914_(1).png"
+                alt="Cox Cargill - Space of Happiness"
+                className="h-12 w-auto object-contain brightness-110"
+              />
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -222,7 +220,7 @@ export default function LandingPage() {
               <h2 className="text-4xl md:text-6xl font-bold mb-8">
                 <span className="block text-white mb-2">Welcome to</span>
                 <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                  COXCARGILL GLAMPS
+                  COX CARGILL
                 </span>
               </h2>
             </div>
@@ -230,7 +228,7 @@ export default function LandingPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  Nestled in the majestic mountains, COXCARGILL GLAMPS offers an extraordinary escape
+                  Nestled in the majestic mountains, COX CARGILL offers an extraordinary escape
                   where luxury meets nature. Our premium glamping experience redefines outdoor adventure
                   with modern comfort and breathtaking views.
                 </p>
@@ -417,15 +415,16 @@ export default function LandingPage() {
       <footer className="relative bg-black border-t border-gray-800 py-12">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-6 md:mb-0">
-              <Sparkles className="w-6 h-6 text-teal-400" />
-              <span className="text-lg font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                COXCARGILL GLAMPS
-              </span>
+            <div className="flex items-center mb-6 md:mb-0">
+              <img
+                src="/img_3914_(1).png"
+                alt="Cox Cargill - Space of Happiness"
+                className="h-10 w-auto object-contain brightness-110"
+              />
             </div>
 
             <div className="text-gray-400 text-sm text-center md:text-right">
-              <p>&copy; 2026 COXCARGILL GLAMPS. All rights reserved.</p>
+              <p>&copy; 2026 COX CARGILL. All rights reserved.</p>
               <p className="mt-1">Crafted with luxury and nature in mind</p>
             </div>
           </div>
