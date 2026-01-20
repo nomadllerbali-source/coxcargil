@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X, MessageCircle, ChevronDown, Sparkles, MapPin, Star, Calendar, Users } from 'lucide-react';
 import ChatBot from '../components/ChatBot';
@@ -8,13 +8,47 @@ export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const aboutRef = useRef<HTMLElement>(null);
+  const propertiesRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      setScrollY(window.scrollY);
     };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.documentElement.style.scrollBehavior = '';
+    };
+  }, []);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    [aboutRef, propertiesRef, contactRef].forEach(ref => {
+      if (ref.current) observer.observe(ref.current);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -26,12 +60,15 @@ export default function LandingPage() {
       }`}>
         <nav className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center group cursor-pointer">
-              <img
-                src="/img_3914_(1).png"
-                alt="Cox Cargill - Space of Happiness"
-                className="h-12 w-auto object-contain brightness-110"
-              />
+            <div className="flex items-center group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <div className="relative">
+                <img
+                  src="/img_3914_(1).png"
+                  alt="Cox Cargill - Space of Happiness"
+                  className="h-12 w-auto object-contain brightness-110 transition-all duration-300 group-hover:brightness-125 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 blur-xl transition-all duration-300"></div>
+              </div>
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -127,15 +164,17 @@ export default function LandingPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
           <img
             src="/whatsapp_image_2026-01-20_at_04.01.34_(1).jpeg"
-            alt="Coxcargill Glamps"
-            className="w-full h-full object-cover scale-105"
+            alt="Cox Cargill - Space of Happiness"
+            className="w-full h-full object-cover scale-105 transition-transform duration-75"
+            style={{ transform: `translateY(${scrollY * 0.5}px) scale(1.05)` }}
           />
           <div className="absolute inset-0 bg-black/30 z-10"></div>
         </div>
 
         <div className="absolute top-0 left-0 right-0 bottom-0 z-10 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse" style={{ animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite', animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animation: 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite', animationDelay: '3s' }}></div>
         </div>
 
         <div className="relative z-20 text-center px-6 max-w-6xl mx-auto pt-20">
@@ -162,18 +201,20 @@ export default function LandingPage() {
               className="group relative px-10 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full font-semibold overflow-hidden shadow-lg shadow-teal-500/50 hover:shadow-2xl hover:shadow-teal-500/60 transition-all duration-300 transform hover:scale-105"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
               <span className="relative flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
+                <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                 Check Availability
               </span>
             </button>
 
             <a
               href="#properties"
-              className="group px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+              className="group px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 flex items-center gap-2 relative overflow-hidden"
             >
-              <span>Explore Properties</span>
-              <ChevronDown className="w-5 h-5 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+              <span className="relative">Explore Properties</span>
+              <ChevronDown className="w-5 h-5 rotate-[-90deg] group-hover:translate-x-1 transition-transform relative" />
             </a>
           </div>
 
@@ -186,11 +227,14 @@ export default function LandingPage() {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center gap-3 p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 hover:border-teal-400/50 transition-all duration-300"
+                className="flex flex-col items-center gap-3 p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 hover:border-teal-400/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
                 style={{ animationDelay: `${0.6 + index * 0.1}s` }}
               >
-                <feature.icon className="w-8 h-8 text-teal-400" />
-                <span className="text-gray-300 text-sm font-medium text-center">{feature.label}</span>
+                <div className="relative">
+                  <feature.icon className="w-8 h-8 text-teal-400 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-teal-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <span className="text-gray-300 text-sm font-medium text-center group-hover:text-teal-300 transition-colors">{feature.label}</span>
               </div>
             ))}
           </div>
@@ -206,7 +250,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="about" className="relative py-32 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden">
+      <section ref={aboutRef} id="about" className="relative py-32 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden opacity-0">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent"></div>
         </div>
@@ -273,7 +317,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="properties" className="relative py-32 bg-black">
+      <section ref={propertiesRef} id="properties" className="relative py-32 bg-black opacity-0">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
             <span className="inline-block px-4 py-2 bg-teal-500/10 backdrop-blur-sm border border-teal-400/30 rounded-full text-teal-400 text-sm font-medium mb-6">
@@ -312,9 +356,10 @@ export default function LandingPage() {
             ].map((property, index) => (
               <div
                 key={index}
-                className="group cursor-pointer"
+                className="group cursor-pointer opacity-0 animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.15}s`, animationFillMode: 'forwards' }}
               >
-                <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-800 hover:border-teal-500/50 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-teal-500/20">
+                <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-800 hover:border-teal-500/50 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-2">
                   <div className="relative h-72 overflow-hidden">
                     <img
                       src={property.image}
@@ -322,17 +367,18 @@ export default function LandingPage() {
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
-                    <div className="absolute top-4 right-4 bg-teal-500/90 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold flex items-center gap-1">
+                    <div className="absolute inset-0 bg-gradient-to-br from-teal-500/0 to-cyan-500/0 group-hover:from-teal-500/10 group-hover:to-cyan-500/10 transition-all duration-500"></div>
+                    <div className="absolute top-4 right-4 bg-teal-500/90 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold flex items-center gap-1 transform group-hover:scale-110 transition-transform duration-300">
                       <Star className="w-4 h-4 fill-white" />
                       <span>Premium</span>
                     </div>
                   </div>
 
                   <div className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors duration-300">
                       {property.title}
                     </h3>
-                    <p className="text-gray-400 mb-6 leading-relaxed">
+                    <p className="text-gray-400 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors">
                       {property.description}
                     </p>
 
@@ -340,15 +386,16 @@ export default function LandingPage() {
                       {property.features.map((feature, i) => (
                         <span
                           key={i}
-                          className="px-3 py-1 bg-teal-500/10 border border-teal-400/30 rounded-full text-teal-400 text-xs font-medium"
+                          className="px-3 py-1 bg-teal-500/10 border border-teal-400/30 rounded-full text-teal-400 text-xs font-medium hover:bg-teal-500/20 hover:border-teal-400/50 transition-all duration-200"
                         >
                           {feature}
                         </span>
                       ))}
                     </div>
 
-                    <button className="w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-teal-500/50 transition-all duration-300 transform group-hover:scale-105">
-                      View Details
+                    <button className="relative w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-teal-500/50 transition-all duration-300 transform group-hover:scale-105 overflow-hidden">
+                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                      <span className="relative">View Details</span>
                     </button>
                   </div>
                 </div>
@@ -358,7 +405,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="contact" className="relative py-32 bg-gradient-to-b from-black via-gray-900 to-black">
+      <section ref={contactRef} id="contact" className="relative py-32 bg-gradient-to-b from-black via-gray-900 to-black opacity-0">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-teal-500/20 via-transparent to-transparent"></div>
         </div>
@@ -380,15 +427,18 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
               <a
                 href="tel:+919496960809"
-                className="group px-10 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full font-semibold shadow-lg shadow-teal-500/50 hover:shadow-2xl hover:shadow-teal-500/60 transition-all duration-300 transform hover:scale-105"
+                className="group relative px-10 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full font-semibold shadow-lg shadow-teal-500/50 hover:shadow-2xl hover:shadow-teal-500/60 transition-all duration-300 transform hover:scale-105 overflow-hidden"
               >
-                Call Us Now
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                <span className="relative">Call Us Now</span>
               </a>
               <a
                 href="mailto:coxcragill@gmail.com"
-                className="px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
+                className="group relative px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 overflow-hidden"
               >
-                Email Us
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                <span className="relative">Email Us</span>
               </a>
             </div>
 
@@ -400,11 +450,14 @@ export default function LandingPage() {
               ].map((contact, index) => (
                 <div
                   key={index}
-                  className="p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 hover:border-teal-400/50 transition-all duration-300"
+                  className="group p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 hover:border-teal-400/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                 >
-                  <contact.icon className="w-8 h-8 text-teal-400 mx-auto mb-4" />
-                  <h3 className="text-white font-semibold mb-2">{contact.title}</h3>
-                  <p className="text-gray-400 text-sm">{contact.value}</p>
+                  <div className="relative inline-block mx-auto mb-4">
+                    <contact.icon className="w-8 h-8 text-teal-400 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-teal-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <h3 className="text-white font-semibold mb-2 group-hover:text-teal-300 transition-colors">{contact.title}</h3>
+                  <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">{contact.value}</p>
                 </div>
               ))}
             </div>
@@ -415,12 +468,15 @@ export default function LandingPage() {
       <footer className="relative bg-black border-t border-gray-800 py-12">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-6 md:mb-0">
-              <img
-                src="/img_3914_(1).png"
-                alt="Cox Cargill - Space of Happiness"
-                className="h-10 w-auto object-contain brightness-110"
-              />
+            <div className="flex items-center mb-6 md:mb-0 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <div className="relative">
+                <img
+                  src="/img_3914_(1).png"
+                  alt="Cox Cargill - Space of Happiness"
+                  className="h-10 w-auto object-contain brightness-110 group-hover:brightness-125 group-hover:scale-105 transition-all duration-300"
+                />
+                <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 blur-xl transition-all duration-300"></div>
+              </div>
             </div>
 
             <div className="text-gray-400 text-sm text-center md:text-right">
@@ -433,10 +489,12 @@ export default function LandingPage() {
 
       <button
         onClick={() => setIsChatOpen(true)}
-        className="fixed bottom-8 right-8 p-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full shadow-2xl shadow-teal-500/50 hover:shadow-teal-500/70 transition-all duration-300 transform hover:scale-110 z-40 group"
+        className="fixed bottom-8 right-8 p-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full shadow-2xl shadow-teal-500/50 hover:shadow-teal-500/70 transition-all duration-300 transform hover:scale-110 z-40 group animate-bounce hover:animate-none"
+        style={{ animation: 'bounce 2s infinite' }}
       >
         <MessageCircle className="w-7 h-7 group-hover:rotate-12 transition-transform" />
         <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
+        <div className="absolute inset-0 rounded-full bg-teal-400/20 blur-xl animate-pulse"></div>
       </button>
 
       {isChatOpen && <ChatBot onClose={() => setIsChatOpen(false)} />}
