@@ -75,14 +75,14 @@ export default function LandingPage() {
           ? 'bg-white shadow-lg shadow-gray-300/50'
           : 'bg-white'
       }`}>
-        <nav className="container mx-auto px-6 py-5">
+        <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <div className="relative">
                 <img
                   src="/img_3914_(1).png"
                   alt="Cox Cargill - Space of Happiness"
-                  className="h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+                  className="h-10 sm:h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 blur-xl transition-all duration-300"></div>
               </div>
@@ -248,61 +248,61 @@ export default function LandingPage() {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center gap-3 p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 hover:border-teal-400/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
+                className="flex flex-col items-center gap-2 sm:gap-3 p-3 sm:p-6 bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/10 hover:bg-white/10 hover:border-teal-400/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
                 style={{ animationDelay: `${0.6 + index * 0.1}s` }}
               >
                 <div className="relative">
-                  <feature.icon className="w-8 h-8 text-teal-400 group-hover:scale-110 transition-transform duration-300" />
+                  <feature.icon className="w-6 h-6 sm:w-8 sm:h-8 text-teal-400 group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-teal-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <span className="text-gray-300 text-sm font-medium text-center group-hover:text-teal-300 transition-colors">{feature.label}</span>
+                <span className="text-gray-300 text-xs sm:text-sm font-medium text-center group-hover:text-teal-300 transition-colors">{feature.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-20">
           <a href="#about" className="text-teal-400 animate-bounce hover:text-teal-300 transition-colors">
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-sm font-medium">Discover More</span>
-              <ChevronDown className="w-8 h-8" />
+            <div className="flex flex-col items-center gap-1 sm:gap-2">
+              <span className="text-xs sm:text-sm font-medium">Discover More</span>
+              <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
           </a>
         </div>
       </section>
 
-      <section ref={aboutRef} id="about" className="relative py-32 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden opacity-0">
+      <section ref={aboutRef} id="about" className="relative py-16 sm:py-24 md:py-32 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden opacity-0">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent"></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <span className="inline-block px-4 py-2 bg-teal-500/10 backdrop-blur-sm border border-teal-400/30 rounded-full text-teal-400 text-sm font-medium mb-6">
+            <div className="text-center mb-10 sm:mb-16">
+              <span className="inline-block px-4 py-2 bg-teal-500/10 backdrop-blur-sm border border-teal-400/30 rounded-full text-teal-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
                 About Us
               </span>
-              <h2 className="text-4xl md:text-6xl font-bold mb-8">
-                <span className="block text-white mb-2">Welcome to</span>
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 sm:mb-8">
+                <span className="block text-white mb-1 sm:mb-2">Welcome to</span>
                 <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                   COX CARGILL
                 </span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <p className="text-lg text-gray-300 leading-relaxed">
+            <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+              <div className="space-y-4 sm:space-y-6">
+                <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
                   Nestled in the majestic mountains, COX CARGILL offers an extraordinary escape
                   where luxury meets nature. Our premium glamping experience redefines outdoor adventure
                   with modern comfort and breathtaking views.
                 </p>
-                <p className="text-lg text-gray-300 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
                   Whether you're seeking a romantic getaway, a family adventure, or a peaceful retreat,
                   our meticulously designed tents provide the perfect sanctuary. Wake up to stunning
                   mountain vistas and fall asleep under a blanket of stars.
                 </p>
-                <div className="flex flex-wrap gap-4 pt-4">
+                <div className="flex flex-wrap gap-2 sm:gap-4 pt-2 sm:pt-4">
                   {['Mountain Views', 'Premium Comfort', '5-Star Service', 'Nature Immersion'].map((tag, index) => (
                     <span
                       key={index}
@@ -314,20 +314,20 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-3xl blur-3xl"></div>
-                <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-3xl border border-teal-500/20 shadow-2xl">
-                  <div className="space-y-6">
+              <div className="relative mt-8 md:mt-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-2xl sm:rounded-3xl blur-3xl"></div>
+                <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-4 sm:p-8 rounded-2xl sm:rounded-3xl border border-teal-500/20 shadow-2xl">
+                  <div className="space-y-3 sm:space-y-6">
                     {[
                       { number: '2500+', label: 'Happy Guests' },
                       { number: '100%', label: 'Satisfaction Rate' },
                       { number: '24/7', label: 'Customer Support' }
                     ].map((stat, index) => (
-                      <div key={index} className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300">
-                        <div className="text-4xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                      <div key={index} className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/5 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all duration-300">
+                        <div className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                           {stat.number}
                         </div>
-                        <div className="text-gray-300 font-medium">{stat.label}</div>
+                        <div className="text-gray-300 text-sm sm:text-base font-medium">{stat.label}</div>
                       </div>
                     ))}
                   </div>
@@ -338,23 +338,23 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section ref={propertiesRef} id="properties" className="relative py-32 bg-black opacity-0">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-            <span className="inline-block px-4 py-2 bg-teal-500/10 backdrop-blur-sm border border-teal-400/30 rounded-full text-teal-400 text-sm font-medium mb-6">
+      <section ref={propertiesRef} id="properties" className="relative py-16 sm:py-24 md:py-32 bg-black opacity-0">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-20">
+            <span className="inline-block px-4 py-2 bg-teal-500/10 backdrop-blur-sm border border-teal-400/30 rounded-full text-teal-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
               Our Properties
             </span>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 Luxury Accommodations
               </span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl text-gray-400 max-w-2xl mx-auto px-4">
               Choose from our carefully curated selection of premium glamping experiences
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
             {[
               {
                 image: '/whatsapp_image_2026-01-20_at_04.01.40_(1).jpeg',
@@ -380,8 +380,8 @@ export default function LandingPage() {
                 className="group cursor-pointer opacity-0 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.15}s`, animationFillMode: 'forwards' }}
               >
-                <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-800 hover:border-teal-500/50 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-2">
-                  <div className="relative h-72 overflow-hidden">
+                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-800 hover:border-teal-500/50 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-2">
+                  <div className="relative h-48 sm:h-64 md:h-72 overflow-hidden">
                     <img
                       src={property.image}
                       alt={property.title}
@@ -389,21 +389,21 @@ export default function LandingPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-teal-500/0 to-cyan-500/0 group-hover:from-teal-500/10 group-hover:to-cyan-500/10 transition-all duration-500"></div>
-                    <div className="absolute top-4 right-4 bg-teal-500/90 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold flex items-center gap-1 transform group-hover:scale-110 transition-transform duration-300">
-                      <Star className="w-4 h-4 fill-white" />
+                    <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-teal-500/90 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-semibold flex items-center gap-1 transform group-hover:scale-110 transition-transform duration-300">
+                      <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-white" />
                       <span>Premium</span>
                     </div>
                   </div>
 
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors duration-300">
+                  <div className="p-4 sm:p-6 md:p-8">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-teal-400 transition-colors duration-300">
                       {property.title}
                     </h3>
-                    <p className="text-gray-400 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors">
+                    <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6 leading-relaxed group-hover:text-gray-300 transition-colors">
                       {property.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
                       {property.features.map((feature, i) => (
                         <span
                           key={i}
@@ -414,7 +414,7 @@ export default function LandingPage() {
                       ))}
                     </div>
 
-                    <button className="relative w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-teal-500/50 transition-all duration-300 transform group-hover:scale-105 overflow-hidden">
+                    <button className="relative w-full py-2.5 sm:py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-sm sm:text-base rounded-xl font-semibold hover:shadow-lg hover:shadow-teal-500/50 transition-all duration-300 transform group-hover:scale-105 overflow-hidden">
                       <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                       <span className="relative">View Details</span>
                     </button>
@@ -426,29 +426,29 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section ref={contactRef} id="contact" className="relative py-32 bg-gradient-to-b from-black via-gray-900 to-black opacity-0">
+      <section ref={contactRef} id="contact" className="relative py-16 sm:py-24 md:py-32 bg-gradient-to-b from-black via-gray-900 to-black opacity-0">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-teal-500/20 via-transparent to-transparent"></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block px-4 py-2 bg-teal-500/10 backdrop-blur-sm border border-teal-400/30 rounded-full text-teal-400 text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-2 bg-teal-500/10 backdrop-blur-sm border border-teal-400/30 rounded-full text-teal-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
               Get in Touch
             </span>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 Start Your Journey
               </span>
             </h2>
-            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
               Have questions? Our team is here to help make your glamping experience unforgettable
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-10 sm:mb-12 px-4">
               <a
                 href="tel:+919496960809"
-                className="group relative px-10 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full font-semibold shadow-lg shadow-teal-500/50 hover:shadow-2xl hover:shadow-teal-500/60 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                className="group relative px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full font-semibold shadow-lg shadow-teal-500/50 hover:shadow-2xl hover:shadow-teal-500/60 transition-all duration-300 transform hover:scale-105 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
@@ -456,14 +456,14 @@ export default function LandingPage() {
               </a>
               <a
                 href="mailto:coxcragill@gmail.com"
-                className="group relative px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                className="group relative px-8 sm:px-10 py-4 sm:py-5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 overflow-hidden"
               >
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
                 <span className="relative">Email Us</span>
               </a>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mt-16">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-10 sm:mt-16">
               {[
                 { icon: MapPin, title: 'Location', value: 'Thalavanji, Koviloor - Top Station Rd, Vattavada, Kerala 685615' },
                 { icon: MessageCircle, title: 'Phone', value: '+91 9496960809' },
@@ -471,14 +471,14 @@ export default function LandingPage() {
               ].map((contact, index) => (
                 <div
                   key={index}
-                  className="group p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 hover:border-teal-400/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                  className="group p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/10 hover:bg-white/10 hover:border-teal-400/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                 >
-                  <div className="relative inline-block mx-auto mb-4">
-                    <contact.icon className="w-8 h-8 text-teal-400 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="relative inline-block mx-auto mb-3 sm:mb-4">
+                    <contact.icon className="w-6 h-6 sm:w-8 sm:h-8 text-teal-400 group-hover:scale-110 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-teal-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                  <h3 className="text-white font-semibold mb-2 group-hover:text-teal-300 transition-colors">{contact.title}</h3>
-                  <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">{contact.value}</p>
+                  <h3 className="text-white text-sm sm:text-base font-semibold mb-2 group-hover:text-teal-300 transition-colors">{contact.title}</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm group-hover:text-gray-300 transition-colors break-words">{contact.value}</p>
                 </div>
               ))}
             </div>
@@ -486,21 +486,21 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="relative bg-black border-t border-gray-800 py-12">
-        <div className="container mx-auto px-6">
+      <footer className="relative bg-black border-t border-gray-800 py-8 sm:py-12">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-6 md:mb-0 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="flex items-center mb-4 sm:mb-6 md:mb-0 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <div className="relative">
                 <img
                   src="/img_3914_(1).png"
                   alt="Cox Cargill - Space of Happiness"
-                  className="h-10 w-auto object-contain brightness-110 group-hover:brightness-125 group-hover:scale-105 transition-all duration-300"
+                  className="h-8 sm:h-10 w-auto object-contain brightness-110 group-hover:brightness-125 group-hover:scale-105 transition-all duration-300"
                 />
                 <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 blur-xl transition-all duration-300"></div>
               </div>
             </div>
 
-            <div className="text-gray-400 text-sm text-center md:text-right">
+            <div className="text-gray-400 text-xs sm:text-sm text-center md:text-right">
               <p>&copy; 2026 COX CARGILL. All rights reserved.</p>
               <p className="mt-1">Crafted with luxury and nature in mind</p>
             </div>
@@ -510,11 +510,11 @@ export default function LandingPage() {
 
       <button
         onClick={() => setIsChatOpen(true)}
-        className="fixed bottom-8 right-8 p-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full shadow-2xl shadow-teal-500/50 hover:shadow-teal-500/70 transition-all duration-300 transform hover:scale-110 z-40 group animate-bounce hover:animate-none"
+        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 p-4 sm:p-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full shadow-2xl shadow-teal-500/50 hover:shadow-teal-500/70 transition-all duration-300 transform hover:scale-110 z-40 group animate-bounce hover:animate-none"
         style={{ animation: 'bounce 2s infinite' }}
       >
-        <MessageCircle className="w-7 h-7 group-hover:rotate-12 transition-transform" />
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
+        <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 group-hover:rotate-12 transition-transform" />
+        <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-red-500 rounded-full animate-pulse"></div>
         <div className="absolute inset-0 rounded-full bg-teal-400/20 blur-xl animate-pulse"></div>
       </button>
 
