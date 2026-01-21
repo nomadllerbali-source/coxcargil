@@ -95,23 +95,22 @@ export default function AdminSidebar() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2.5 bg-gray-900 text-white rounded-lg shadow-lg hover:bg-gray-800 transition-colors"
-        aria-label="Toggle menu"
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-900 text-white rounded-lg shadow-lg"
       >
-        {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
 
       <aside
-        className={`fixed left-0 top-0 h-full bg-gray-900 text-white w-64 sm:w-72 transform transition-transform duration-300 ease-in-out z-40 ${
+        className={`fixed left-0 top-0 h-full bg-gray-900 text-white w-64 transform transition-transform duration-300 ease-in-out z-40 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 overflow-y-auto`}
+        } lg:translate-x-0`}
       >
-        <div className="flex flex-col min-h-full">
-          <div className="p-4 sm:p-6 border-b border-gray-800">
-            <h1 className="text-xl sm:text-2xl font-bold">Admin Panel</h1>
+        <div className="flex flex-col h-full">
+          <div className="p-6 border-b border-gray-800">
+            <h1 className="text-2xl font-bold">Admin Panel</h1>
           </div>
 
-          <nav className="flex-1 p-3 sm:p-4 space-y-1 sm:space-y-2">
+          <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -119,26 +118,26 @@ export default function AdminSidebar() {
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg transition-all ${
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${
                     isActive(item.path)
-                      ? 'bg-blue-600 text-white shadow-lg'
+                      ? 'bg-blue-600 text-white'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
                   }`}
                 >
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                  <span className="font-medium text-sm sm:text-base">{item.label}</span>
+                  <Icon className="w-5 h-5" />
+                  <span className="font-medium">{item.label}</span>
                 </Link>
               );
             })}
           </nav>
 
-          <div className="p-3 sm:p-4 border-t border-gray-800 mt-auto">
+          <div className="p-4 border-t border-gray-800">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-gray-300 hover:bg-red-600 hover:text-white transition-all w-full"
+              className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-red-600 hover:text-white transition w-full"
             >
-              <LogOut className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-              <span className="font-medium text-sm sm:text-base">Logout</span>
+              <LogOut className="w-5 h-5" />
+              <span className="font-medium">Logout</span>
             </button>
           </div>
         </div>
