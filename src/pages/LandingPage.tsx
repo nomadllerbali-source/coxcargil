@@ -204,11 +204,6 @@ export default function LandingPage() {
         </div>
 
         <div className="relative z-20 text-center px-6 max-w-6xl mx-auto pt-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-500/10 backdrop-blur-sm border border-teal-400/30 rounded-full mb-8 animate-fade-in">
-            <Star className="w-4 h-4 text-teal-400" />
-            <span className="text-teal-300 text-sm font-medium">Premium Glamping Experience</span>
-          </div>
-
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight animate-fade-in-up">
             <span className="block text-white mb-2">Escape to Nature's</span>
             <span className="block bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
