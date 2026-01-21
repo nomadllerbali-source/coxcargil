@@ -3,12 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import { Menu, X, MessageCircle, ChevronDown, Sparkles, MapPin, Star, Calendar, Users } from 'lucide-react';
 import ChatBot from '../components/ChatBot';
 
+const heroBackgroundImages = [
+  '/whatsapp_image_2026-01-20_at_04.22.59 copy.jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.41_(2).jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.41_(1).jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.41.jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.36.jpeg',
+];
+
 export default function LandingPage() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const aboutRef = useRef<HTMLElement>(null);
   const propertiesRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
@@ -26,6 +35,14 @@ export default function LandingPage() {
       window.removeEventListener('scroll', handleScroll);
       document.documentElement.style.scrollBehavior = '';
     };
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroBackgroundImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -160,14 +177,23 @@ export default function LandingPage() {
 
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
+          {heroBackgroundImages.map((image, index) => (
+            <div
+              key={image}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={image}
+                alt="Cox Cargill - Space of Happiness"
+                className="w-full h-full object-cover scale-105 transition-transform duration-75"
+                style={{ transform: `translateY(${scrollY * 0.5}px) scale(1.05)` }}
+              />
+            </div>
+          ))}
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-teal-900/40 to-black/70 z-10"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
-          <img
-            src="/whatsapp_image_2026-01-20_at_04.01.34_(1).jpeg"
-            alt="Cox Cargill - Space of Happiness"
-            className="w-full h-full object-cover scale-105 transition-transform duration-75"
-            style={{ transform: `translateY(${scrollY * 0.5}px) scale(1.05)` }}
-          />
           <div className="absolute inset-0 bg-black/30 z-10"></div>
         </div>
 
