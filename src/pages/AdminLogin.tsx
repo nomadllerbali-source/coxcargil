@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Lock, User, ArrowRight } from 'lucide-react';
+import { Lock, User, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -35,6 +35,14 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full">
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center text-blue-200 hover:text-white mb-8 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Home
+          </button>
+
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
               <Lock className="w-8 h-8 text-white" />
