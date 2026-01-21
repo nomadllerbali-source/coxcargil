@@ -72,8 +72,8 @@ export default function LandingPage() {
     <div className="min-h-screen bg-black">
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-black/90 backdrop-blur-xl shadow-lg shadow-teal-500/10'
-          : 'bg-transparent'
+          ? 'bg-white shadow-lg shadow-gray-300/50'
+          : 'bg-white'
       }`}>
         <nav className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
@@ -82,51 +82,51 @@ export default function LandingPage() {
                 <img
                   src="/img_3914_(1).png"
                   alt="Cox Cargill - Space of Happiness"
-                  className="h-12 w-auto object-contain brightness-110 transition-all duration-300 group-hover:brightness-125 group-hover:scale-105"
+                  className="h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 blur-xl transition-all duration-300"></div>
               </div>
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#home" className="text-gray-300 hover:text-teal-400 transition-all duration-300 font-medium relative group">
+              <a href="#home" className="text-gray-700 hover:text-teal-500 transition-all duration-300 font-medium relative group">
                 Home
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="#about" className="text-gray-300 hover:text-teal-400 transition-all duration-300 font-medium relative group">
+              <a href="#about" className="text-gray-700 hover:text-teal-500 transition-all duration-300 font-medium relative group">
                 About
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="#properties" className="text-gray-300 hover:text-teal-400 transition-all duration-300 font-medium relative group">
+              <a href="#properties" className="text-gray-700 hover:text-teal-500 transition-all duration-300 font-medium relative group">
                 Properties
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="#contact" className="text-gray-300 hover:text-teal-400 transition-all duration-300 font-medium relative group">
+              <a href="#contact" className="text-gray-700 hover:text-teal-500 transition-all duration-300 font-medium relative group">
                 Contact
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
               </a>
 
               <div className="relative group">
-                <button className="flex items-center space-x-1 text-gray-300 hover:text-teal-400 transition-all duration-300 font-medium">
+                <button className="flex items-center space-x-1 text-gray-700 hover:text-teal-500 transition-all duration-300 font-medium">
                   <span>Portals</span>
                   <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
                 </button>
-                <div className="absolute right-0 mt-4 w-56 bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-teal-500/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-2 transition-all duration-300 border border-teal-500/20 overflow-hidden">
+                <div className="absolute right-0 mt-4 w-56 bg-white rounded-2xl shadow-2xl shadow-gray-300/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-2 transition-all duration-300 border border-gray-200 overflow-hidden">
                   <button
                     onClick={() => navigate('/admin/login')}
-                    className="block w-full text-left px-6 py-4 text-gray-300 hover:bg-teal-500/10 hover:text-teal-400 transition-all duration-300 border-b border-gray-800/50"
+                    className="block w-full text-left px-6 py-4 text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-all duration-300 border-b border-gray-200"
                   >
                     Admin Portal
                   </button>
                   <button
                     onClick={() => navigate('/b2b')}
-                    className="block w-full text-left px-6 py-4 text-gray-300 hover:bg-teal-500/10 hover:text-teal-400 transition-all duration-300 border-b border-gray-800/50"
+                    className="block w-full text-left px-6 py-4 text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-all duration-300 border-b border-gray-200"
                   >
                     B2B Agent Portal
                   </button>
                   <button
                     onClick={() => navigate('/staff/login')}
-                    className="block w-full text-left px-6 py-4 text-gray-300 hover:bg-teal-500/10 hover:text-teal-400 transition-all duration-300"
+                    className="block w-full text-left px-6 py-4 text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-all duration-300"
                   >
                     Staff Portal
                   </button>
@@ -136,7 +136,7 @@ export default function LandingPage() {
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-gray-300 hover:text-teal-400 transition-colors"
+              className="md:hidden text-gray-700 hover:text-teal-500 transition-colors"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -144,27 +144,27 @@ export default function LandingPage() {
 
           {isMenuOpen && (
             <div className="md:hidden mt-6 pb-6 animate-fade-in">
-              <div className="flex flex-col space-y-4 bg-gray-900/50 backdrop-blur-xl rounded-2xl p-6 border border-teal-500/20">
-                <a href="#home" className="text-gray-300 hover:text-teal-400 transition-colors font-medium">Home</a>
-                <a href="#about" className="text-gray-300 hover:text-teal-400 transition-colors font-medium">About</a>
-                <a href="#properties" className="text-gray-300 hover:text-teal-400 transition-colors font-medium">Properties</a>
-                <a href="#contact" className="text-gray-300 hover:text-teal-400 transition-colors font-medium">Contact</a>
-                <div className="pt-4 border-t border-gray-700/50">
+              <div className="flex flex-col space-y-4 bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-lg">
+                <a href="#home" className="text-gray-700 hover:text-teal-500 transition-colors font-medium">Home</a>
+                <a href="#about" className="text-gray-700 hover:text-teal-500 transition-colors font-medium">About</a>
+                <a href="#properties" className="text-gray-700 hover:text-teal-500 transition-colors font-medium">Properties</a>
+                <a href="#contact" className="text-gray-700 hover:text-teal-500 transition-colors font-medium">Contact</a>
+                <div className="pt-4 border-t border-gray-300">
                   <button
                     onClick={() => navigate('/admin/login')}
-                    className="block w-full text-left py-3 text-gray-300 hover:text-teal-400 transition-colors font-medium"
+                    className="block w-full text-left py-3 text-gray-700 hover:text-teal-500 transition-colors font-medium"
                   >
                     Admin Portal
                   </button>
                   <button
                     onClick={() => navigate('/b2b')}
-                    className="block w-full text-left py-3 text-gray-300 hover:text-teal-400 transition-colors font-medium"
+                    className="block w-full text-left py-3 text-gray-700 hover:text-teal-500 transition-colors font-medium"
                   >
                     B2B Agent Portal
                   </button>
                   <button
                     onClick={() => navigate('/staff/login')}
-                    className="block w-full text-left py-3 text-gray-300 hover:text-teal-400 transition-colors font-medium"
+                    className="block w-full text-left py-3 text-gray-700 hover:text-teal-500 transition-colors font-medium"
                   >
                     Staff Portal
                   </button>
