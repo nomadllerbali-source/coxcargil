@@ -206,96 +206,97 @@ export default function AdminDashboard() {
       <AdminSidebar />
       <div className="lg:ml-64 min-h-screen bg-gray-50">
         <div className="bg-white shadow">
-          <div className="px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+          <div className="px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Dashboard</h1>
               <Link
                 to="/admin/add-property-type"
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm sm:text-base whitespace-nowrap"
               >
                 <Plus className="w-4 h-4" />
-                Add Property Type
+                <span className="hidden sm:inline">Add Property Type</span>
+                <span className="sm:hidden">Add Property</span>
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8">
           <button
             onClick={() => setActiveView('all-bookings')}
-            className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-all text-left"
+            className="bg-white p-4 sm:p-6 rounded-lg shadow hover:shadow-lg transition-all text-left"
           >
-            <div className="flex items-center gap-3">
-              <Users className="w-10 h-10 text-blue-600" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Users className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 flex-shrink-0" />
               <div>
-                <p className="text-sm text-gray-600">Total Bookings</p>
-                <p className="text-2xl font-bold text-gray-900">{guests.length}</p>
+                <p className="text-xs sm:text-sm text-gray-600">Total Bookings</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900">{guests.length}</p>
               </div>
             </div>
           </button>
 
           <button
             onClick={() => setActiveView('checked-in')}
-            className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-all text-left"
+            className="bg-white p-4 sm:p-6 rounded-lg shadow hover:shadow-lg transition-all text-left"
           >
-            <div className="flex items-center gap-3">
-              <Calendar className="w-10 h-10 text-green-600" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Calendar className="w-8 h-8 sm:w-10 sm:h-10 text-green-600 flex-shrink-0" />
               <div>
-                <p className="text-sm text-gray-600">Checked In</p>
-                <p className="text-2xl font-bold text-gray-900">{getCheckedInCount()}</p>
+                <p className="text-xs sm:text-sm text-gray-600">Checked In</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900">{getCheckedInCount()}</p>
               </div>
             </div>
           </button>
 
           <button
             onClick={() => setActiveView('pending-requests')}
-            className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-all text-left"
+            className="bg-white p-4 sm:p-6 rounded-lg shadow hover:shadow-lg transition-all text-left"
           >
-            <div className="flex items-center gap-3">
-              <Bell className="w-10 h-10 text-yellow-600" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Bell className="w-8 h-8 sm:w-10 sm:h-10 text-yellow-600 flex-shrink-0" />
               <div>
-                <p className="text-sm text-gray-600">Pending Requests</p>
-                <p className="text-2xl font-bold text-gray-900">{getPendingRequests().length}</p>
+                <p className="text-xs sm:text-sm text-gray-600">Pending Requests</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900">{getPendingRequests().length}</p>
               </div>
             </div>
           </button>
 
           <Link
             to="/admin/payments"
-            className="bg-gradient-to-r from-teal-600 to-blue-600 p-6 rounded-lg shadow text-white hover:from-teal-700 hover:to-blue-700 transition"
+            className="bg-gradient-to-r from-teal-600 to-blue-600 p-4 sm:p-6 rounded-lg shadow text-white hover:from-teal-700 hover:to-blue-700 transition"
           >
-            <div className="flex items-center gap-3">
-              <DollarSign className="w-10 h-10" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <DollarSign className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" />
               <div>
-                <p className="text-sm text-teal-100">View All</p>
-                <p className="text-xl font-bold">Payments</p>
+                <p className="text-xs sm:text-sm text-teal-100">View All</p>
+                <p className="text-base sm:text-xl font-bold">Payments</p>
               </div>
             </div>
           </Link>
 
           <Link
             to="/admin/service-requests"
-            className="bg-gradient-to-r from-blue-600 to-teal-600 p-6 rounded-lg shadow text-white hover:from-blue-700 hover:to-teal-700 transition"
+            className="bg-gradient-to-r from-blue-600 to-teal-600 p-4 sm:p-6 rounded-lg shadow text-white hover:from-blue-700 hover:to-teal-700 transition"
           >
-            <div className="flex items-center gap-3">
-              <Bell className="w-10 h-10" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Bell className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" />
               <div>
-                <p className="text-sm text-blue-100">View All</p>
-                <p className="text-xl font-bold">Service Requests</p>
+                <p className="text-xs sm:text-sm text-blue-100">View All</p>
+                <p className="text-base sm:text-xl font-bold">Service Requests</p>
               </div>
             </div>
           </Link>
 
           <Link
             to="/admin/payment-config"
-            className="bg-gradient-to-r from-green-600 to-teal-600 p-6 rounded-lg shadow text-white hover:from-green-700 hover:to-teal-700 transition"
+            className="bg-gradient-to-r from-green-600 to-teal-600 p-4 sm:p-6 rounded-lg shadow text-white hover:from-green-700 hover:to-teal-700 transition"
           >
-            <div className="flex items-center gap-3">
-              <DollarSign className="w-10 h-10" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <DollarSign className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" />
               <div>
-                <p className="text-sm text-green-100">Configure</p>
-                <p className="text-xl font-bold">Payment Settings</p>
+                <p className="text-xs sm:text-sm text-green-100">Configure</p>
+                <p className="text-base sm:text-xl font-bold">Payment Settings</p>
               </div>
             </div>
           </Link>
@@ -303,71 +304,71 @@ export default function AdminDashboard() {
 
         {activeView === 'dashboard' && (
         <>
-        <div className="bg-white rounded-lg shadow mb-8">
-          <div className="p-6 border-b border-gray-200">
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <h2 className="text-2xl font-bold text-gray-900">Property Types</h2>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-gray-600" />
+        <div className="bg-white rounded-lg shadow mb-6 sm:mb-8">
+          <div className="p-4 sm:p-6 border-b border-gray-200">
+            <div className="flex flex-col gap-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Property Types</h2>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-2 flex-1">
+                  <Calendar className="w-5 h-5 text-gray-600 flex-shrink-0" />
                   <input
                     type="date"
                     value={checkDate}
                     onChange={(e) => setCheckDate(e.target.value)}
-                    className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    className="flex-1 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                     placeholder="Check availability"
                   />
                   {checkDate && (
                     <button
                       onClick={() => setCheckDate('')}
-                      className="px-3 py-2 text-gray-600 hover:text-gray-900 transition"
+                      className="px-2 sm:px-3 py-2 text-sm text-gray-600 hover:text-gray-900 transition whitespace-nowrap"
                     >
                       Clear
                     </button>
                   )}
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <Link
                     to="/admin/property-types"
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition text-sm"
+                    className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition text-xs sm:text-sm"
                   >
                     <Settings className="w-4 h-4" />
-                    Manage All
+                    <span>Manage All</span>
                   </Link>
                   <Link
                     to="/admin/add-property-type"
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm"
+                    className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-xs sm:text-sm"
                   >
                     <Plus className="w-4 h-4" />
-                    Add Property
+                    <span>Add Property</span>
                   </Link>
                 </div>
               </div>
             </div>
             {checkDate && (
               <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-                <p className="text-sm text-blue-800">
+                <p className="text-xs sm:text-sm text-blue-800">
                   Showing availability for <span className="font-semibold">{new Date(checkDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </p>
               </div>
             )}
           </div>
 
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             {propertyTypes.length === 0 ? (
-              <div className="text-center py-12">
-                <Home className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500 text-lg mb-4">No property types added yet</p>
+              <div className="text-center py-8 sm:py-12">
+                <Home className="w-12 h-12 sm:w-16 sm:h-16 text-gray-300 mx-auto mb-4" />
+                <p className="text-gray-500 text-base sm:text-lg mb-4">No property types added yet</p>
                 <Link
                   to="/admin/add-property-type"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                  className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
                 >
-                  <Plus className="w-5 h-5" />
+                  <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
                   Add Your First Property Type
                 </Link>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {propertyTypes.map((property) => {
                   const availableRooms = getAvailableRooms(property);
                   const isFullyBooked = availableRooms !== null && availableRooms <= 0;
@@ -375,20 +376,20 @@ export default function AdminDashboard() {
                   return (
                     <div
                       key={property.id}
-                      className={`border rounded-lg p-6 hover:shadow-md transition ${
+                      className={`border rounded-lg p-4 sm:p-6 hover:shadow-md transition ${
                         isFullyBooked ? 'border-red-300 bg-red-50' : 'border-gray-200'
                       }`}
                     >
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          <div className={`p-3 rounded-lg ${isFullyBooked ? 'bg-red-100' : 'bg-blue-100'}`}>
-                            <Home className={`w-6 h-6 ${isFullyBooked ? 'text-red-600' : 'text-blue-600'}`} />
+                      <div className="flex items-start justify-between mb-3 sm:mb-4">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className={`p-2 sm:p-3 rounded-lg ${isFullyBooked ? 'bg-red-100' : 'bg-blue-100'} flex-shrink-0`}>
+                            <Home className={`w-5 h-5 sm:w-6 sm:h-6 ${isFullyBooked ? 'text-red-600' : 'text-blue-600'}`} />
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold text-gray-900">
+                            <h3 className="text-base sm:text-lg font-semibold text-gray-900">
                               {property.property_name}
                             </h3>
-                            <p className="text-sm text-gray-500">{property.number_of_rooms} total rooms</p>
+                            <p className="text-xs sm:text-sm text-gray-500">{property.number_of_rooms} total rooms</p>
                           </div>
                         </div>
                       </div>
@@ -462,13 +463,13 @@ export default function AdminDashboard() {
         </div>
 
         <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b border-gray-200">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">Bookings</h2>
-              <div className="flex gap-2">
+          <div className="p-4 sm:p-6 border-b border-gray-200">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Bookings</h2>
+              <div className="flex flex-wrap gap-2 w-full sm:w-auto">
                 <button
                   onClick={() => setFilter('all')}
-                  className={`px-4 py-2 rounded-lg transition ${
+                  className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg transition ${
                     filter === 'all'
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -478,7 +479,7 @@ export default function AdminDashboard() {
                 </button>
                 <button
                   onClick={() => setFilter('confirmed')}
-                  className={`px-4 py-2 rounded-lg transition ${
+                  className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg transition ${
                     filter === 'confirmed'
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -488,7 +489,7 @@ export default function AdminDashboard() {
                 </button>
                 <button
                   onClick={() => setFilter('checked-in')}
-                  className={`px-4 py-2 rounded-lg transition ${
+                  className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg transition ${
                     filter === 'checked-in'
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -498,7 +499,7 @@ export default function AdminDashboard() {
                 </button>
                 <button
                   onClick={() => setFilter('checked-out')}
-                  className={`px-4 py-2 rounded-lg transition ${
+                  className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg transition ${
                     filter === 'checked-out'
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -510,35 +511,35 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full">
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <table className="w-full min-w-max">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Guest
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Phone
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Property
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Guests
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Confirmation
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Check-in
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Check-out
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -546,14 +547,14 @@ export default function AdminDashboard() {
               <tbody className="bg-white divide-y divide-gray-200">
                 {getFilteredGuests().map((guest) => (
                   <tr key={guest.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{guest.guest_name}</div>
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                      <div className="text-xs sm:text-sm font-medium text-gray-900">{guest.guest_name}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">{guest.phone}</div>
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                      <div className="text-xs sm:text-sm text-gray-500">{guest.phone}</div>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="text-sm text-gray-900">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4">
+                      <div className="text-xs sm:text-sm text-gray-900">
                         {guest.booking_rooms && guest.booking_rooms.length > 0 ? (
                           <div className="space-y-1">
                             {guest.booking_rooms.map((room) => (
@@ -567,26 +568,26 @@ export default function AdminDashboard() {
                         )}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                      <div className="text-xs sm:text-sm text-gray-900">
                         {guest.number_of_packs} Adults
                         {guest.number_of_kids > 0 && `, ${guest.number_of_kids} Kids`}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{guest.confirmation_number}</div>
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                      <div className="text-xs sm:text-sm text-gray-900">{guest.confirmation_number}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                      <div className="text-xs sm:text-sm text-gray-500">
                         {new Date(guest.check_in_date).toLocaleDateString()}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                      <div className="text-xs sm:text-sm text-gray-500">
                         {new Date(guest.check_out_date).toLocaleDateString()}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
                       <span
                         className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(
                           guest.booking_status
@@ -595,48 +596,48 @@ export default function AdminDashboard() {
                         {guest.booking_status.toUpperCase()}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => {
                             setSelectedGuest(guest);
                             setShowDetailsModal(true);
                           }}
-                          className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition"
+                          className="p-1.5 sm:p-2 text-green-600 hover:bg-green-50 rounded-lg transition"
                           title="View details"
                         >
-                          <Eye className="w-4 h-4" />
+                          <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         </button>
                         <button
                           onClick={() => {
                             setSelectedGuest(guest);
                             setShowUpdateModal(true);
                           }}
-                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition"
+                          className="p-1.5 sm:p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition"
                           title="Update booking"
                         >
-                          <Edit className="w-4 h-4" />
+                          <Edit className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         </button>
                         <button
                           onClick={() => {
                             setSelectedGuest(guest);
                             setShowCancelModal(true);
                           }}
-                          className="p-2 text-yellow-600 hover:bg-yellow-50 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="p-1.5 sm:p-2 text-yellow-600 hover:bg-yellow-50 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
                           title="Cancel booking"
                           disabled={guest.booking_status === 'cancelled'}
                         >
-                          <Ban className="w-4 h-4" />
+                          <Ban className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         </button>
                         <button
                           onClick={() => {
                             setSelectedGuest(guest);
                             setShowDeleteModal(true);
                           }}
-                          className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
+                          className="p-1.5 sm:p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
                           title="Delete booking"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         </button>
                       </div>
                     </td>
@@ -651,19 +652,19 @@ export default function AdminDashboard() {
 
         {activeView === 'all-bookings' && (
           <div className="bg-white rounded-lg shadow">
-            <div className="p-6 border-b border-gray-200">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-gray-900">All Bookings</h2>
+            <div className="p-4 sm:p-6 border-b border-gray-200">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900">All Bookings</h2>
                 <button
                   onClick={() => setActiveView('dashboard')}
-                  className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
+                  className="w-full sm:w-auto px-4 py-2 text-sm sm:text-base bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
                 >
                   Back to Dashboard
                 </button>
               </div>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto -mx-4 sm:mx-0">
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
@@ -802,48 +803,48 @@ export default function AdminDashboard() {
         )}
 
         {activeView === 'checked-in' && (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div className="bg-white rounded-lg shadow">
-              <div className="p-6 border-b border-gray-200">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-bold text-gray-900">Checked In Guests</h2>
+              <div className="p-4 sm:p-6 border-b border-gray-200">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Checked In Guests</h2>
                   <button
                     onClick={() => {
                       setActiveView('dashboard');
                       setCheckinFilterDate('');
                     }}
-                    className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
+                    className="w-full sm:w-auto px-4 py-2 text-sm sm:text-base bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
                   >
                     Back to Dashboard
                   </button>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-gray-600" />
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+                  <div className="flex items-center gap-2 flex-1">
+                    <Calendar className="w-5 h-5 text-gray-600 flex-shrink-0" />
                     <input
                       type="date"
                       value={checkinFilterDate}
                       onChange={(e) => setCheckinFilterDate(e.target.value)}
-                      className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
+                      className="flex-1 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
                       placeholder="Filter by check-in date"
                     />
                     {checkinFilterDate && (
                       <button
                         onClick={() => setCheckinFilterDate('')}
-                        className="px-3 py-2 text-gray-600 hover:text-gray-900 transition"
+                        className="px-2 sm:px-3 py-2 text-sm text-gray-600 hover:text-gray-900 transition whitespace-nowrap"
                       >
                         Clear
                       </button>
                     )}
                   </div>
-                  <div className="flex-1 text-sm text-gray-600">
+                  <div className="text-xs sm:text-sm text-gray-600">
                     Showing {getFilteredCheckedInGuests().length} of {getCheckedInCount()} checked-in guests
                   </div>
                 </div>
               </div>
 
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto -mx-4 sm:mx-0">
                 <table className="w-full">
                   <thead className="bg-gray-50">
                     <tr>
@@ -932,18 +933,18 @@ export default function AdminDashboard() {
             </div>
 
             <div className="bg-white rounded-lg shadow">
-              <div className="p-6 border-b border-gray-200 bg-green-50">
-                <h3 className="text-xl font-bold text-green-900">Today's Check-Ins</h3>
-                <p className="text-sm text-green-700 mt-1">
+              <div className="p-4 sm:p-6 border-b border-gray-200 bg-green-50">
+                <h3 className="text-lg sm:text-xl font-bold text-green-900">Today's Check-Ins</h3>
+                <p className="text-xs sm:text-sm text-green-700 mt-1">
                   {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                 </p>
               </div>
 
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto -mx-4 sm:mx-0">
                 {getTodayCheckIns().length === 0 ? (
-                  <div className="p-8 text-center">
-                    <Calendar className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                    <p className="text-gray-500">No check-ins scheduled for today</p>
+                  <div className="p-6 sm:p-8 text-center">
+                    <Calendar className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-3" />
+                    <p className="text-sm sm:text-base text-gray-500">No check-ins scheduled for today</p>
                   </div>
                 ) : (
                   <table className="w-full">
@@ -1034,23 +1035,23 @@ export default function AdminDashboard() {
 
         {activeView === 'pending-requests' && (
           <div className="bg-white rounded-lg shadow">
-            <div className="p-6 border-b border-gray-200">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-gray-900">Pending Service Requests</h2>
+            <div className="p-4 sm:p-6 border-b border-gray-200">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Pending Service Requests</h2>
                 <button
                   onClick={() => setActiveView('dashboard')}
-                  className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
+                  className="w-full sm:w-auto px-4 py-2 text-sm sm:text-base bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
                 >
                   Back to Dashboard
                 </button>
               </div>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto -mx-4 sm:mx-0">
               {getPendingRequests().length === 0 ? (
-                <div className="p-8 text-center">
-                  <Bell className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                  <p className="text-gray-500">No pending service requests</p>
+                <div className="p-6 sm:p-8 text-center">
+                  <Bell className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-3" />
+                  <p className="text-sm sm:text-base text-gray-500">No pending service requests</p>
                 </div>
               ) : (
                 <table className="w-full">
