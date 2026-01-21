@@ -1,14 +1,31 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, User, ArrowRight, ArrowLeft } from 'lucide-react';
+
+const backgroundImages = [
+  '/whatsapp_image_2026-01-20_at_04.22.59 copy.jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.41_(2).jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.41_(1).jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.41.jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.36.jpeg',
+];
 
 export default function AdminLogin() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -33,8 +50,26 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full">
+    <div className="min-h-screen relative flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          {backgroundImages.map((image, index) => (
+            <div
+              key={image}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={image}
+                alt="Background"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-blue-900/80"></div>
+            </div>
+          ))}
+        </div>
+
+        <div className="max-w-md w-full relative z-10">
           <button
             onClick={() => navigate('/')}
             className="flex items-center text-blue-200 hover:text-white mb-8 transition-colors"

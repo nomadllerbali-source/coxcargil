@@ -1,7 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { Lock, Mail, ArrowLeft } from 'lucide-react';
+
+const backgroundImages = [
+  '/whatsapp_image_2026-01-20_at_04.22.59 copy.jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.41_(2).jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.41_(1).jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.41.jpeg',
+  '/whatsapp_image_2026-01-20_at_04.01.36.jpeg',
+];
 
 export default function StaffLogin() {
   const navigate = useNavigate();
@@ -9,6 +17,15 @@ export default function StaffLogin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,11 +63,29 @@ export default function StaffLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
+    <div className="min-h-screen relative flex items-center justify-center p-4 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        {backgroundImages.map((image, index) => (
+          <div
+            key={image}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <img
+              src={image}
+              alt="Background"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-gray-700/80"></div>
+          </div>
+        ))}
+      </div>
+
+      <div className="max-w-md w-full relative z-10">
         <button
           onClick={() => navigate('/')}
-          className="flex items-center text-gray-700 hover:text-gray-900 mb-8 transition-colors"
+          className="flex items-center text-gray-200 hover:text-white mb-8 transition-colors"
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back to Home
